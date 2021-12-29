@@ -29,7 +29,6 @@ function create(req, res) {
         req.body.departs = undefined;
     }
 
-
     Flight.create(req.body, function (err, flightDoc) {
         console.log(flightDoc, "<- flightDoc");
 
