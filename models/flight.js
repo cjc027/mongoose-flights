@@ -23,7 +23,7 @@ const flightSchema = new Schema({
   departs: {
     type: String,
     default: function () {
-      return new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+      return new Date(Date.now() + 365*24*60*60*1000)
       // return Date.now() + 365*24*60*60*1000
     }
   }

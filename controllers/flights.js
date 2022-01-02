@@ -16,7 +16,8 @@ function index(req, res) {
 
 function newFlight(req, res) {
     res.render('flights/new', {
-        invalid: ''
+        defaultDate: Date.parse(new Date(Date.now() + 365*24*60*60*1000)),
+        timezoneOffset: new Date().getTimezoneOffset()*60000
     })
 }
 
