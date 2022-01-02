@@ -38,6 +38,8 @@
         </label><br>
         <label>Departure
             <!-- <input type="datetime-local" name="departs" value= new Date(Date.now() + 365*24*60*60*1000).toISOString().slice(0, 16) > -->
+            <!-- Changed input value property to use variables rendered through flight controller module. The main problem with my previous solution was that slicing the time zone information off of the ISO String (in order to conform to the requirements of the datetime-local string) meant that the default date shown became a year ahead based on GMT/UTC instead of the client's timezone/system time. -->
+            <!-- By subtracting the timezoneOffset (milliseconds) from the defaultDate when instantiating a new Date, I negated the timezone offset that occurs when turning a date object into an ISO String. Using this method, the default date that shows in the input will be a year ahead of the current date based on the client's time zone  -->
             <input type="datetime-local" name="departs" value=<%= new Date(defaultDate - timezoneOffset).toISOString().slice(0, 16) %> >
         </label><br>
         <input type="submit" value="Add Flight">

@@ -16,6 +16,8 @@ function index(req, res) {
 
 function newFlight(req, res) {
     res.render('flights/new', {
+        // defaultDate: instantiates a new date object 1 year ahead of the current date (based on the client's timezone/system time).
+        // timezoneOffset: takes the timezone offset (difference between client's time and UTC in minutes), then converts to milliseconds (60 * 1000)
         defaultDate: Date.parse(new Date(Date.now() + 365*24*60*60*1000)),
         timezoneOffset: new Date().getTimezoneOffset()*60000
     })
