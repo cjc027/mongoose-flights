@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    
+    <section>
+        <p>Airline: <%= flight.airline %></p>
+        <p>Airport: <%= flight.airport %></p>
+        <p>Flight Number: <%= flight.flightNo %></p>
+        <p>Departure Date: <%= flight.departs %></p>
+        
+        <br>
+        <% if (flight.destinations.length){ %>
+            <p>Destinations</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Airport</th>
+                        <th>Arrival</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% flight.destinations.forEach(element => { %>
+                        <tr>
+                            <td>element.airport</td>
+                            <td>element.arrival</td>
+                        </tr>
+                                        
+                    <% }); %>
+                    
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No Stops</p>
+        <% } %>
+
+    </section>
+
+
+</body>
+</html>
