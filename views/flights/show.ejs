@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,26 @@
     <title>Document</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+
 <body>
-    
+    <nav>
+        <a href='/flights'>All Flights</a> | 
+        <a href='/flights/new'>Add Flight</a>
+    </nav>
     <section>
-        <p>Airline: <%= flight.airline %></p>
-        <p>Airport: <%= flight.airport %></p>
-        <p>Flight Number: <%= flight.flightNo %></p>
-        <p>Departure Date: <%= flight.departs %></p>
-        
+        <h2>Flight Details</h2>
+        <p>Airline: <%= flight.airline %>
+        </p>
+        <p>Airport: <%= flight.airport %>
+        </p>
+        <p>Flight Number: <%= flight.flightNo %>
+        </p>
+        <p>Departure Date: <%= flight.departs %>
+        </p>
+
         <br>
         <% if (flight.destinations.length){ %>
-            <p>Destinations</p>
+            <h3>Destinations</h3>
             <table>
                 <thead>
                     <tr>
@@ -26,22 +36,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% flight.destinations.forEach(element => { %>
+                    <% flight.destinations.forEach(element=> { %>
                         <tr>
-                            <td>element.airport</td>
-                            <td>element.arrival</td>
+                            <td><%= element.airport %></td>
+                            <td><%= element.arrival %></td>
                         </tr>
-                                        
-                    <% }); %>
-                    
+
+                        <% }); %>
                 </tbody>
             </table>
-        <% } else { %>
-            <p>No Stops</p>
-        <% } %>
+            <% } else { %>
+                <p>No Stops</p>
+                <% } %>
+
+    </section>
+
+
+    <br><br>
+    <section>
+
+        <h2>Add Stop</h2>
+        <form method="POST" action="/flights/<%= flight._id %>/destinations">
+            <label>Airport:</label>
+            <select name="airport">
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN">DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+
+            <br><br>
+            <label>Arrival:</label>
+            <input type="datetime-local" name="arrival">
+
+            <br><br>
+            <input type="submit" value="Add Stop">
+        </form>
 
     </section>
 
 
 </body>
+
 </html>
