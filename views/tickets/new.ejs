@@ -15,13 +15,14 @@
     </nav>
 
     <h2>Add a New Ticket</h2>
-    <form action="???" method="POST">
+    <form action="/flights/<%=flightId%>/tickets" method="POST">
+    <form action="/tickets" method="POST">
         <label>Seat:
             <input name="seat" required pattern="[A-F][1-9]\d?">
-        </label><br>
+        </label><br><br>
         <label>Price:
             <input type='text' name='price'>
-        </label><br>
+        </label><br><br>
         <input type="submit" value="Add Ticket">
 
 </body>
