@@ -14,6 +14,7 @@
         <a href='/flights'>All Flights</a> | 
         <a href='/flights/new'>Add Flight</a>
     </nav>
+
     <section>
         <h2>Flight Details</h2>
         <p>Airline: <%= flight.airline %>
@@ -45,9 +46,37 @@
                         <% }); %>
                 </tbody>
             </table>
-            <% } else { %>
-                <p>No Stops</p>
-                <% } %>
+        <% } else { %>
+            <p>No Stops</p>
+        <% } %>
+
+        <br>
+        <% if (tickets.length){ %>
+            <h3>Tickets</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Seat</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% tickets.forEach(element=> { %>
+                        <tr>
+                            <td><%= element.seat %></td>
+                            <td><%= element.price %></td>
+                        </tr>
+
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No Tickets</p>
+        <% } %>
+
+        <br>
+        <a href='/flights/<%=flight._id%>/tickets/new'><button>Add Ticket</button></a>
+
 
     </section>
 
