@@ -27,7 +27,6 @@ function newFlight(req, res) {
 
 function create(req, res) {
 
-    // console.log(req.body);
     if (!!req.body.departs) {
         req.body.departs = new Date(req.body.departs);
     } else {
@@ -35,15 +34,12 @@ function create(req, res) {
     }
 
     Flight.create(req.body, function (err, flightDoc) {
-        console.log(flightDoc, "<- flightDoc");
-
         res.redirect('/flights');
     })
 }
 
 function show(req, res){
     Flight.findById(req.params.id, function(err, flightDoc){
-        console.log(flightDoc)
         Ticket.find({flight: flightDoc._id}, function(err, ticketDocs){
             res.render('flights/show', {
                 title: 'Flight Details', 
